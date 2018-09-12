@@ -16,26 +16,26 @@ namespace OOP_RPG
             this.Monsters = new List<Monster>();
             this.hero = hero;
             this.game = game;
+            this.AddMonster("Squid", 9, 8, 20);
+            this.AddMonster("Vampire", 18, 7, 21);
+            this.AddMonster("Gremlin", 7, 16, 22);
+            this.AddMonster("Banshee", 14, 12, 19);
+            var enemy = this.Monsters[0];
+            var enemy1 = this.Monsters[1];
+            var enemy2 = this.Monsters[2];
+            var enemy3 = this.Monsters.Last();
             var maxStrength = (from monster in this.Monsters where monster.CurrentHP < 20 select monster).First();
             var minStrength = (from monster in this.Monsters where monster.Strength >= 11 select monster).First();
             var randomEnemy = Monsters.OrderBy(monster => Guid.NewGuid()).FirstOrDefault();
             Console.WriteLine(randomEnemy);
-
         }
 
         public void AddMonster(string name, int strength, int defense, int hp)
         {
             var monster = new Monster(name, strength, defense, hp);
-            this.AddMonster("Squid", 9, 8, 20);
-            this.AddMonster("Vampire", 8, 7, 21);
-            this.AddMonster("Gremlin", 7, 6, 22);
-            this.AddMonster("Banshee", 10, 12, 19);
-            var enemy = this.Monsters[0];
-            var enemy1 = this.Monsters[1];
-            var enemy2 = this.Monsters[2];
-            var enemy3 = this.Monsters.Last();
+
             this.Monsters.Add(monster);
-            monster = enemy;
+         
         }
 
         public void Start()

@@ -54,6 +54,7 @@ namespace OOP_RPG
             foreach(var a in this.ArmorsBag){
                 Console.WriteLine(a.Name + " of " + a.Defense + " Defense");
             }
+            Console.WriteLine("Gold: ");
         }
         
         public void EquipWeapon() {
