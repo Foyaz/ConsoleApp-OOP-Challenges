@@ -43,6 +43,8 @@ namespace OOP_RPG
             Console.WriteLine("Defense: " + this.Defense);
             Console.WriteLine("Hitpoints: " + this.CurrentHP + "/" + this.OriginalHP);
             Console.WriteLine("Gold: " + this.Gold);
+            Console.WriteLine("Weapon: " + this.WeaponsBag);
+            Console.WriteLine("Armor: " + this.ArmorsBag);
         }
         
         public void ShowInventory() {
@@ -55,18 +57,28 @@ namespace OOP_RPG
             foreach(var a in this.ArmorsBag){
                 Console.WriteLine(a.Name + " of " + a.Defense + " Defense");
             }
-            Console.WriteLine("Gold: ");
+            Console.WriteLine("Gold: "+ this.Gold);
         }
         
         public void EquipWeapon() {
             if(WeaponsBag.Any()) {
                 this.EquippedWeapon = this.WeaponsBag[0];
+                Console.WriteLine("Equipped Weapons: ");
+                foreach (var ew in this.WeaponsBag)
+                {
+                    Console.WriteLine(ew.Name + " of " + ew.Strength + " Strength");
+                }
             }
         }
         
         public void EquipArmor() {
             if(ArmorsBag.Any()) {
                 this.EquippedArmor = this.ArmorsBag[0];
+                Console.WriteLine("Eqipped Armor: ");
+                foreach (var ea in this.ArmorsBag)
+                {
+                    Console.WriteLine(ea.Name + " of " + ea.Defense + " Defense");
+                }
             }
         }
         
