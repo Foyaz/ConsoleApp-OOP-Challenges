@@ -7,19 +7,24 @@ namespace OOP_RPG
     public class Fight
     {
         List<Monster> Monsters { get; set; }
+        List<Potion> Potions { get; set; }
         public Game game { get; set; }
         public Hero hero { get; set; }
         public Monster monster { get; set; }
+        public Potion potion { get; set; }
+        public int speed { get; set; }
 
         public Fight(Hero hero, Game game)
         {
             this.Monsters = new List<Monster>();
+            this.Potions = new List<Potion>();
             this.hero = hero;
             this.game = game;
             this.AddMonster("Squid", 9, 8, 20);
             this.AddMonster("Vampire", 18, 7, 21);
             this.AddMonster("Gremlin", 7, 16, 22);
             this.AddMonster("Banshee", 14, 12, 19);
+            this.addPotions("Healing", 10, 15, 12);
             var enemy = this.Monsters[0];
             var enemy1 = this.Monsters[1];
             var enemy2 = this.Monsters[2];
@@ -107,6 +112,14 @@ namespace OOP_RPG
             {
                 this.Start();
             }
+        }
+
+        public void addPotions(string name, int hp, int originalValue, int resellValue)
+        {
+            var potion = new Potion(name, hp, originalValue, resellValue);
+
+            this.Potions.Add(potion);
+
         }
 
         public void Win()
