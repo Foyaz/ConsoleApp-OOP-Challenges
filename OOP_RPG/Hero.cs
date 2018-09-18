@@ -16,14 +16,18 @@ namespace OOP_RPG
         public Hero() {
             this.ArmorsBag = new List<Armor>();
             this.WeaponsBag = new List<Weapon>();
+            this.PotionBag = new List<Potion>();
+            this.game = game;
             this.Strength = 10;
             this.Defense = 10;
             this.OriginalHP = 30;
             this.CurrentHP = 30;
             this.Gold = 0;
+            this.Speed = 10;
         }
         
         // These are the Properties of our Class.
+        public Game game { get; set; }
         public string Name { get; set; }
         public int Strength { get; set; }
         public int Defense { get; set; }
@@ -32,6 +36,7 @@ namespace OOP_RPG
         public Weapon EquippedWeapon { get; set; }
         public Armor EquippedArmor { get; set; }
         public int Gold { get; set; }
+        public int Speed { get; set; }
         
         public List<Armor> ArmorsBag { get; set;}
         public List <Weapon> WeaponsBag { get; set; }

@@ -11,8 +11,10 @@ namespace OOP_RPG
         List<Armor> Armors { get; set; }
         List<Weapon> Weapons { get; set; }
         List<Potion> Potions { get; set; }
+        public Game game { get; set; }
+        public Hero hero { get; set; }
 
-        public Shop()
+        public Shop(Game game, Hero hero)
         {
             this.Armors = new List<Armor>();
             this.Weapons = new List<Weapon>();
@@ -75,31 +77,49 @@ namespace OOP_RPG
 
         public void ShowInventory()
         {
-            Console.WriteLine("*****" + this.Name + "*****");
-            Console.WriteLine("Original Value: " + this.OriginalValue);
+            Console.WriteLine("What you want to buy?");
+            Console.WriteLine("1.Weapons");
+            Console.WriteLine("2.Armors");
+            Console.WriteLine("3.Potions");
+
             var input = Console.ReadLine();
-            if (input == "itemNumber")
+            if (input == "1")
             {
-                this.Sell();
+              foreach( var weapon in this.Weapons)
+            {
+              Console.WriteLine($"{weapon.Name} - {weapon.OriginalValue} Gold");
+            }    
             }
-            else if (input == "r")
+            else if (input == "2")
             {
-                this.Menu();
+            foreach( var armor in this.Armors)
+            {
+              Console.WriteLine($"{armor.Name} - {armor.OriginalValue} Gold");
+            } 
+            }
+            else if (input == "3")
+            {
+              foreach( var potion in this.Potions)
+            {
+              Console.WriteLine($"{potion.Name} - {potion.OriginalValue} Gold");
+            }
             }
             else
             {
-                return;
+             return;
+             this.Menu;
             }
         }
 
         public void BuyfromUser()
         {
-            Console.WriteLine("*****" + this.Name + "*****");
-            Console.WriteLine("Re-sell Value: " + this.ResellValue);
-            var input = Console.ReadLine();
+            Console.WriteLine("What you want to Buy?");
+            Console.WriteLine("1.Weapons");
+            Console.WriteLine("2.Armors");
+            Console.WriteLine("3.Potions");            var input = Console.ReadLine();
             if (input == "itemNumber")
             {
-                this.Buy();
+             Console.WriteLine("Buy");   
             }
             else if (input == "r")
             {
@@ -111,12 +131,8 @@ namespace OOP_RPG
             }
         }
 
-        public void Buy()
-        {
-            Console.WriteLine("Buy items here.");
-        }
 
-        public void Sell()
+        public void Sell(int inputNumber, string name)
         {
             Console.WriteLine("Sell your items here.");
         }

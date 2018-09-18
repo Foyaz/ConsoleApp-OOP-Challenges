@@ -11,13 +11,11 @@ namespace OOP_RPG
         public Game game { get; set; }
         public Hero hero { get; set; }
         public Monster monster { get; set; }
-        public Potion potion { get; set; }
         public int speed { get; set; }
 
         public Fight(Hero hero, Game game)
         {
             this.Monsters = new List<Monster>();
-            this.Potions = new List<Potion>();
             this.hero = hero;
             this.game = game;
             this.AddMonster("Squid", 9, 8, 20);
@@ -38,9 +36,7 @@ namespace OOP_RPG
         public void AddMonster(string name, int strength, int defense, int hp)
         {
             var monster = new Monster(name, strength, defense, hp);
-
             this.Monsters.Add(monster);
-         
         }
 
         public void Start()
@@ -48,10 +44,15 @@ namespace OOP_RPG
             Console.WriteLine("You've encountered a " + monster.Name + "! " + monster.Strength + " Strength/" + monster.Defense + " Defense/" +
             monster.CurrentHP + " HP. What will you do?");
             Console.WriteLine("1. Fight");
+            Console.WriteLine("2. Use Potion");
             var input = Console.ReadLine();
             if (input == "1")
             {
                 this.HeroTurn();
+            }
+            if (input == "2")
+            {
+                this.shop();
             }
             else
             {
@@ -112,14 +113,6 @@ namespace OOP_RPG
             {
                 this.Start();
             }
-        }
-
-        public void addPotions(string name, int hp, int originalValue, int resellValue)
-        {
-            var potion = new Potion(name, hp, originalValue, resellValue);
-
-            this.Potions.Add(potion);
-
         }
 
         public void Win()
